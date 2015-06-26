@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="DBSR2.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link type="text/css" rel="Stylesheet" href="Styles/styles.css" />
+    <link type="text/css" rel="Stylesheet" href="Styles/menu.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <ajaxToolkit:ToolkitScriptManager id="ToolkitScriptManager1" runat="server" CombineScripts="true" />
+    <asp:SiteMapDataSource id="SiteMap" runat="server" SiteMapProvider="XmlSiteMapProvider" ShowStartingNode="false" />
+    <div>
+        <div style="overflow:hidden">
+            <div style="float:left"><h1><asp:ContentPlaceHolder ID="ContenidoTitulo" runat="server" /></h1></div>
+            <div style="float:right"><asp:LinkButton ID="LogoutButton" runat="server" Text="Salir" /></div>
+        </div>
+
+        <div class="DivMenu">
+            <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" CssClass="Menu" DataSourceID="SiteMap">
+            <StaticMenuStyle CssClass="MenuNivel1" />
+            <DynamicMenuStyle CssClass="MenuNivel2" />
+            <DynamicHoverStyle CssClass="MenuNivel2Hover" />
+            <LevelMenuItemStyles>
+                <asp:MenuItemStyle CssClass="MenuNivel1" />
+                <asp:MenuItemStyle CssClass="MenuItemNivel2" />
+            </LevelMenuItemStyles>
+            </asp:Menu>
+        </div>
+        <p />
+        <asp:UpdatePanel ID="ContenidoUpdatePanel" runat="server">
+        <ContentTemplate>
+            <asp:Panel id="FiltrosPanel" runat="server" CssClass="panelfiltros" Visible="false">
+                <strong>Filtros</strong><br /><br />
+                <asp:ContentPlaceHolder ID="Filtros" runat="server" />
+            </asp:Panel>
+
+            <asp:ContentPlaceHolder ID="Contenido" runat="server" />
+        </ContentTemplate>
+        </asp:UpdatePanel>
+    </div>
+    </form>
+</body>
+</html>

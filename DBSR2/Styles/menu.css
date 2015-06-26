@@ -1,0 +1,35 @@
+﻿.DivMenu
+{
+    background-color: Orange;
+    height: 20px;
+    padding-top: 5px;
+    padding-left: 10px;
+    float: none;
+    display: block;
+}
+
+.MenuNivel1
+{
+    width: 200px;
+}
+
+.MenuNivel1Hover
+{
+}
+
+.MenuNivel2
+{
+    border: 1px solid black;
+}
+
+.MenuNivel2Hover
+{
+    background-color: Orange;
+}
+
+.MenuItemNivel2 
+{
+    height: 20px;
+    padding: 5px;
+}
+

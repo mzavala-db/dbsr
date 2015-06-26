@@ -1,0 +1,795 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DbsrModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CuentaFacturacion">
+          <Key>
+            <PropertyRef Name="IdCuentaFacturacion" />
+          </Key>
+          <Property Name="IdCuentaFacturacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feriado">
+          <Key>
+            <PropertyRef Name="IdFeriado" />
+          </Key>
+          <Property Name="IdFeriado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hito">
+          <Key>
+            <PropertyRef Name="IdHito" />
+          </Key>
+          <Property Name="IdHito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="FechaAlta" Type="date" Nullable="false" />
+          <Property Name="FechaEstimada" Type="date" Nullable="false" />
+          <Property Name="FechaCumplimiento" Type="date" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdTaskAsana" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ModalidadProyecto">
+          <Key>
+            <PropertyRef Name="IdModalidadProyecto" />
+          </Key>
+          <Property Name="IdModalidadProyecto" Type="tinyint" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MotivoLicencia">
+          <Key>
+            <PropertyRef Name="IdMotivoLicencia" />
+          </Key>
+          <Property Name="IdMotivoLicencia" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proyecto">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+          </Key>
+          <Property Name="IdProyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="IdCuentaFacturacion" Type="int" Nullable="false" />
+          <Property Name="FechaInicioEstimada" Type="date" />
+          <Property Name="FechaInicioReal" Type="date" />
+          <Property Name="FechaFinEstimada" Type="date" />
+          <Property Name="FechaFinReal" Type="date" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="IdModalidadProyecto" Type="tinyint" Nullable="false" />
+          <Property Name="IdRecursoPL" Type="int" />
+        </EntityType>
+        <EntityType Name="Recurso">
+          <Key>
+            <PropertyRef Name="IdRecurso" />
+          </Key>
+          <Property Name="IdRecurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="IdTipoRecurso" Type="tinyint" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecursoLicencia">
+          <Key>
+            <PropertyRef Name="IdRecursoLicencia" />
+          </Key>
+          <Property Name="IdRecursoLicencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRecurso" Type="int" Nullable="false" />
+          <Property Name="IdMotivoLicencia" Type="tinyint" Nullable="false" />
+          <Property Name="FechaDesde" Type="date" Nullable="false" />
+          <Property Name="FechaHasta" Type="date" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RecursoProyecto">
+          <Key>
+            <PropertyRef Name="IdRecursoProyecto" />
+          </Key>
+          <Property Name="IdRecursoProyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRecurso" Type="int" Nullable="false" />
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="FechaDesde" Type="date" />
+          <Property Name="FechaHasta" Type="date" />
+          <Property Name="Horas" Type="tinyint" Nullable="false" />
+          <Property Name="HorasFacturacion" Type="tinyint" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ReporteEstado">
+          <Key>
+            <PropertyRef Name="IdReporteEstado" />
+          </Key>
+          <Property Name="IdReporteEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoRecurso">
+          <Key>
+            <PropertyRef Name="IdTipoRecurso" />
+          </Key>
+          <Property Name="IdTipoRecurso" Type="tinyint" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Hito_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="Hito" Type="Self.Hito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="IdProyecto" />
+            </Principal>
+            <Dependent Role="Hito">
+              <PropertyRef Name="IdProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_CuentaFacturacion">
+          <End Role="CuentaFacturacion" Type="Self.CuentaFacturacion" Multiplicity="1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuentaFacturacion">
+              <PropertyRef Name="IdCuentaFacturacion" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="IdCuentaFacturacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_ModalidadProyecto">
+          <End Role="ModalidadProyecto" Type="Self.ModalidadProyecto" Multiplicity="1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModalidadProyecto">
+              <PropertyRef Name="IdModalidadProyecto" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="IdModalidadProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_RecursoPL">
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="0..1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurso">
+              <PropertyRef Name="IdRecurso" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="IdRecursoPL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recurso_TipoRecurso">
+          <End Role="TipoRecurso" Type="Self.TipoRecurso" Multiplicity="1" />
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoRecurso">
+              <PropertyRef Name="IdTipoRecurso" />
+            </Principal>
+            <Dependent Role="Recurso">
+              <PropertyRef Name="IdTipoRecurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecursoLicencia_MotivoLicencia">
+          <End Role="MotivoLicencia" Type="Self.MotivoLicencia" Multiplicity="1" />
+          <End Role="RecursoLicencia" Type="Self.RecursoLicencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotivoLicencia">
+              <PropertyRef Name="IdMotivoLicencia" />
+            </Principal>
+            <Dependent Role="RecursoLicencia">
+              <PropertyRef Name="IdMotivoLicencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecursoLicencia_Recurso">
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="1" />
+          <End Role="RecursoLicencia" Type="Self.RecursoLicencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurso">
+              <PropertyRef Name="IdRecurso" />
+            </Principal>
+            <Dependent Role="RecursoLicencia">
+              <PropertyRef Name="IdRecurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecursoProyecto_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="RecursoProyecto" Type="Self.RecursoProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="IdProyecto" />
+            </Principal>
+            <Dependent Role="RecursoProyecto">
+              <PropertyRef Name="IdProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecursoProyecto_Recurso">
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="1" />
+          <End Role="RecursoProyecto" Type="Self.RecursoProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurso">
+              <PropertyRef Name="IdRecurso" />
+            </Principal>
+            <Dependent Role="RecursoProyecto">
+              <PropertyRef Name="IdRecurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReporteEstado_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="ReporteEstado" Type="Self.ReporteEstado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="IdProyecto" />
+            </Principal>
+            <Dependent Role="ReporteEstado">
+              <PropertyRef Name="IdProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbsrModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CuentaFacturacion" EntityType="Self.CuentaFacturacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feriado" EntityType="Self.Feriado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hito" EntityType="Self.Hito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModalidadProyecto" EntityType="Self.ModalidadProyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MotivoLicencia" EntityType="Self.MotivoLicencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proyecto" EntityType="Self.Proyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recurso" EntityType="Self.Recurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecursoLicencia" EntityType="Self.RecursoLicencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecursoProyecto" EntityType="Self.RecursoProyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReporteEstado" EntityType="Self.ReporteEstado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoRecurso" EntityType="Self.TipoRecurso" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Hito_Proyecto" Association="Self.FK_Hito_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Hito" EntitySet="Hito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_Cliente" Association="Self.FK_Proyecto_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_CuentaFacturacion" Association="Self.FK_Proyecto_CuentaFacturacion">
+            <End Role="CuentaFacturacion" EntitySet="CuentaFacturacion" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_ModalidadProyecto" Association="Self.FK_Proyecto_ModalidadProyecto">
+            <End Role="ModalidadProyecto" EntitySet="ModalidadProyecto" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_RecursoPL" Association="Self.FK_Proyecto_RecursoPL">
+            <End Role="Recurso" EntitySet="Recurso" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recurso_TipoRecurso" Association="Self.FK_Recurso_TipoRecurso">
+            <End Role="TipoRecurso" EntitySet="TipoRecurso" />
+            <End Role="Recurso" EntitySet="Recurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecursoLicencia_MotivoLicencia" Association="Self.FK_RecursoLicencia_MotivoLicencia">
+            <End Role="MotivoLicencia" EntitySet="MotivoLicencia" />
+            <End Role="RecursoLicencia" EntitySet="RecursoLicencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecursoLicencia_Recurso" Association="Self.FK_RecursoLicencia_Recurso">
+            <End Role="Recurso" EntitySet="Recurso" />
+            <End Role="RecursoLicencia" EntitySet="RecursoLicencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecursoProyecto_Proyecto" Association="Self.FK_RecursoProyecto_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="RecursoProyecto" EntitySet="RecursoProyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecursoProyecto_Recurso" Association="Self.FK_RecursoProyecto_Recurso">
+            <End Role="Recurso" EntitySet="Recurso" />
+            <End Role="RecursoProyecto" EntitySet="RecursoProyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReporteEstado_Proyecto" Association="Self.FK_ReporteEstado_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="ReporteEstado" EntitySet="ReporteEstado" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbsrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_Cliente" FromRole="Cliente" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="CuentaFacturacion">
+          <Key>
+            <PropertyRef Name="IdCuentaFacturacion" />
+          </Key>
+          <Property Name="IdCuentaFacturacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_CuentaFacturacion" FromRole="CuentaFacturacion" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="Feriado">
+          <Key>
+            <PropertyRef Name="IdFeriado" />
+          </Key>
+          <Property Name="IdFeriado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Hito">
+          <Key>
+            <PropertyRef Name="IdHito" />
+          </Key>
+          <Property Name="IdHito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProyecto" Type="Int32" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaEstimada" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaCumplimiento" Type="DateTime" Precision="0" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdTaskAsana" Type="Int64" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_Hito_Proyecto" FromRole="Hito" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="ModalidadProyecto">
+          <Key>
+            <PropertyRef Name="IdModalidadProyecto" />
+          </Key>
+          <Property Name="IdModalidadProyecto" Type="Byte" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_ModalidadProyecto" FromRole="ModalidadProyecto" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="MotivoLicencia">
+          <Key>
+            <PropertyRef Name="IdMotivoLicencia" />
+          </Key>
+          <Property Name="IdMotivoLicencia" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RecursoLicencia" Relationship="Self.FK_RecursoLicencia_MotivoLicencia" FromRole="MotivoLicencia" ToRole="RecursoLicencia" />
+        </EntityType>
+        <EntityType Name="Proyecto">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+          </Key>
+          <Property Name="IdProyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdCuentaFacturacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaInicioEstimada" Type="DateTime" Precision="0" />
+          <Property Name="FechaInicioReal" Type="DateTime" Precision="0" />
+          <Property Name="FechaFinEstimada" Type="DateTime" Precision="0" />
+          <Property Name="FechaFinReal" Type="DateTime" Precision="0" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="IdModalidadProyecto" Type="Byte" Nullable="false" />
+          <Property Name="IdRecursoPL" Type="Int32" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Proyecto_Cliente" FromRole="Proyecto" ToRole="Cliente" />
+          <NavigationProperty Name="CuentaFacturacion" Relationship="Self.FK_Proyecto_CuentaFacturacion" FromRole="Proyecto" ToRole="CuentaFacturacion" />
+          <NavigationProperty Name="Hito" Relationship="Self.FK_Hito_Proyecto" FromRole="Proyecto" ToRole="Hito" />
+          <NavigationProperty Name="ModalidadProyecto" Relationship="Self.FK_Proyecto_ModalidadProyecto" FromRole="Proyecto" ToRole="ModalidadProyecto" />
+          <NavigationProperty Name="Recurso" Relationship="Self.FK_Proyecto_RecursoPL" FromRole="Proyecto" ToRole="Recurso" />
+          <NavigationProperty Name="RecursoProyecto" Relationship="Self.FK_RecursoProyecto_Proyecto" FromRole="Proyecto" ToRole="RecursoProyecto" />
+          <NavigationProperty Name="ReporteEstado" Relationship="Self.FK_ReporteEstado_Proyecto" FromRole="Proyecto" ToRole="ReporteEstado" />
+        </EntityType>
+        <EntityType Name="Recurso">
+          <Key>
+            <PropertyRef Name="IdRecurso" />
+          </Key>
+          <Property Name="IdRecurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdTipoRecurso" Type="Byte" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_RecursoPL" FromRole="Recurso" ToRole="Proyecto" />
+          <NavigationProperty Name="TipoRecurso" Relationship="Self.FK_Recurso_TipoRecurso" FromRole="Recurso" ToRole="TipoRecurso" />
+          <NavigationProperty Name="RecursoLicencia" Relationship="Self.FK_RecursoLicencia_Recurso" FromRole="Recurso" ToRole="RecursoLicencia" />
+          <NavigationProperty Name="RecursoProyecto" Relationship="Self.FK_RecursoProyecto_Recurso" FromRole="Recurso" ToRole="RecursoProyecto" />
+        </EntityType>
+        <EntityType Name="RecursoLicencia">
+          <Key>
+            <PropertyRef Name="IdRecursoLicencia" />
+          </Key>
+          <Property Name="IdRecursoLicencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRecurso" Type="Int32" Nullable="false" />
+          <Property Name="IdMotivoLicencia" Type="Byte" Nullable="false" />
+          <Property Name="FechaDesde" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaHasta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MotivoLicencia" Relationship="Self.FK_RecursoLicencia_MotivoLicencia" FromRole="RecursoLicencia" ToRole="MotivoLicencia" />
+          <NavigationProperty Name="Recurso" Relationship="Self.FK_RecursoLicencia_Recurso" FromRole="RecursoLicencia" ToRole="Recurso" />
+        </EntityType>
+        <EntityType Name="RecursoProyecto">
+          <Key>
+            <PropertyRef Name="IdRecursoProyecto" />
+          </Key>
+          <Property Name="IdRecursoProyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRecurso" Type="Int32" Nullable="false" />
+          <Property Name="IdProyecto" Type="Int32" Nullable="false" />
+          <Property Name="FechaDesde" Type="DateTime" Precision="0" />
+          <Property Name="FechaHasta" Type="DateTime" Precision="0" />
+          <Property Name="Horas" Type="Byte" Nullable="false" />
+          <Property Name="HorasFacturacion" Type="Byte" Nullable="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_RecursoProyecto_Proyecto" FromRole="RecursoProyecto" ToRole="Proyecto" />
+          <NavigationProperty Name="Recurso" Relationship="Self.FK_RecursoProyecto_Recurso" FromRole="RecursoProyecto" ToRole="Recurso" />
+        </EntityType>
+        <EntityType Name="ReporteEstado">
+          <Key>
+            <PropertyRef Name="IdReporteEstado" />
+          </Key>
+          <Property Name="IdReporteEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProyecto" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_ReporteEstado_Proyecto" FromRole="ReporteEstado" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="TipoRecurso">
+          <Key>
+            <PropertyRef Name="IdTipoRecurso" />
+          </Key>
+          <Property Name="IdTipoRecurso" Type="Byte" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Recurso" Relationship="Self.FK_Recurso_TipoRecurso" FromRole="TipoRecurso" ToRole="Recurso" />
+        </EntityType>
+        <Association Name="FK_Proyecto_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_CuentaFacturacion">
+          <End Role="CuentaFacturacion" Type="Self.CuentaFacturacion" Multiplicity="1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuentaFacturacion">
+              <PropertyRef Name="IdCuentaFacturacion" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="IdCuentaFacturacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hito_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="Hito" Type="Self.Hito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="IdProyecto" />
+            </Principal>
+            <Dependent Role="Hito">
+              <PropertyRef Name="IdProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_ModalidadProyecto">
+          <End Role="ModalidadProyecto" Type="Self.ModalidadProyecto" Multiplicity="1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModalidadProyecto">
+              <PropertyRef Name="IdModalidadProyecto" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="IdModalidadProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecursoLicencia_MotivoLicencia">
+          <End Role="MotivoLicencia" Type="Self.MotivoLicencia" Multiplicity="1" />
+          <End Role="RecursoLicencia" Type="Self.RecursoLicencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MotivoLicencia">
+              <PropertyRef Name="IdMotivoLicencia" />
+            </Principal>
+            <Dependent Role="RecursoLicencia">
+              <PropertyRef Name="IdMotivoLicencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_RecursoPL">
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="0..1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurso">
+              <PropertyRef Name="IdRecurso" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="IdRecursoPL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecursoProyecto_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="RecursoProyecto" Type="Self.RecursoProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="IdProyecto" />
+            </Principal>
+            <Dependent Role="RecursoProyecto">
+              <PropertyRef Name="IdProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReporteEstado_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="ReporteEstado" Type="Self.ReporteEstado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="IdProyecto" />
+            </Principal>
+            <Dependent Role="ReporteEstado">
+              <PropertyRef Name="IdProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recurso_TipoRecurso">
+          <End Role="TipoRecurso" Type="Self.TipoRecurso" Multiplicity="1" />
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoRecurso">
+              <PropertyRef Name="IdTipoRecurso" />
+            </Principal>
+            <Dependent Role="Recurso">
+              <PropertyRef Name="IdTipoRecurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecursoLicencia_Recurso">
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="1" />
+          <End Role="RecursoLicencia" Type="Self.RecursoLicencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurso">
+              <PropertyRef Name="IdRecurso" />
+            </Principal>
+            <Dependent Role="RecursoLicencia">
+              <PropertyRef Name="IdRecurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecursoProyecto_Recurso">
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="1" />
+          <End Role="RecursoProyecto" Type="Self.RecursoProyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurso">
+              <PropertyRef Name="IdRecurso" />
+            </Principal>
+            <Dependent Role="RecursoProyecto">
+              <PropertyRef Name="IdRecurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBSREntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="CuentaFacturacion" EntityType="Self.CuentaFacturacion" />
+          <EntitySet Name="Feriado" EntityType="Self.Feriado" />
+          <EntitySet Name="Hito" EntityType="Self.Hito" />
+          <EntitySet Name="ModalidadProyecto" EntityType="Self.ModalidadProyecto" />
+          <EntitySet Name="MotivoLicencia" EntityType="Self.MotivoLicencia" />
+          <EntitySet Name="Proyecto" EntityType="Self.Proyecto" />
+          <EntitySet Name="Recurso" EntityType="Self.Recurso" />
+          <EntitySet Name="RecursoLicencia" EntityType="Self.RecursoLicencia" />
+          <EntitySet Name="RecursoProyecto" EntityType="Self.RecursoProyecto" />
+          <EntitySet Name="ReporteEstado" EntityType="Self.ReporteEstado" />
+          <EntitySet Name="TipoRecurso" EntityType="Self.TipoRecurso" />
+          <AssociationSet Name="FK_Proyecto_Cliente" Association="Self.FK_Proyecto_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_CuentaFacturacion" Association="Self.FK_Proyecto_CuentaFacturacion">
+            <End Role="CuentaFacturacion" EntitySet="CuentaFacturacion" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hito_Proyecto" Association="Self.FK_Hito_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Hito" EntitySet="Hito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_ModalidadProyecto" Association="Self.FK_Proyecto_ModalidadProyecto">
+            <End Role="ModalidadProyecto" EntitySet="ModalidadProyecto" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecursoLicencia_MotivoLicencia" Association="Self.FK_RecursoLicencia_MotivoLicencia">
+            <End Role="MotivoLicencia" EntitySet="MotivoLicencia" />
+            <End Role="RecursoLicencia" EntitySet="RecursoLicencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_RecursoPL" Association="Self.FK_Proyecto_RecursoPL">
+            <End Role="Recurso" EntitySet="Recurso" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecursoProyecto_Proyecto" Association="Self.FK_RecursoProyecto_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="RecursoProyecto" EntitySet="RecursoProyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReporteEstado_Proyecto" Association="Self.FK_ReporteEstado_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="ReporteEstado" EntitySet="ReporteEstado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recurso_TipoRecurso" Association="Self.FK_Recurso_TipoRecurso">
+            <End Role="TipoRecurso" EntitySet="TipoRecurso" />
+            <End Role="Recurso" EntitySet="Recurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecursoLicencia_Recurso" Association="Self.FK_RecursoLicencia_Recurso">
+            <End Role="Recurso" EntitySet="Recurso" />
+            <End Role="RecursoLicencia" EntitySet="RecursoLicencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecursoProyecto_Recurso" Association="Self.FK_RecursoProyecto_Recurso">
+            <End Role="Recurso" EntitySet="Recurso" />
+            <End Role="RecursoProyecto" EntitySet="RecursoProyecto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbsrModelStoreContainer" CdmEntityContainer="DBSREntities2">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="DbsrModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CuentaFacturacion">
+            <EntityTypeMapping TypeName="DbsrModel.CuentaFacturacion">
+              <MappingFragment StoreEntitySet="CuentaFacturacion">
+                <ScalarProperty Name="IdCuentaFacturacion" ColumnName="IdCuentaFacturacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feriado">
+            <EntityTypeMapping TypeName="DbsrModel.Feriado">
+              <MappingFragment StoreEntitySet="Feriado">
+                <ScalarProperty Name="IdFeriado" ColumnName="IdFeriado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hito">
+            <EntityTypeMapping TypeName="DbsrModel.Hito">
+              <MappingFragment StoreEntitySet="Hito">
+                <ScalarProperty Name="IdHito" ColumnName="IdHito" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="FechaEstimada" ColumnName="FechaEstimada" />
+                <ScalarProperty Name="FechaCumplimiento" ColumnName="FechaCumplimiento" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdTaskAsana" ColumnName="IdTaskAsana" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModalidadProyecto">
+            <EntityTypeMapping TypeName="DbsrModel.ModalidadProyecto">
+              <MappingFragment StoreEntitySet="ModalidadProyecto">
+                <ScalarProperty Name="IdModalidadProyecto" ColumnName="IdModalidadProyecto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MotivoLicencia">
+            <EntityTypeMapping TypeName="DbsrModel.MotivoLicencia">
+              <MappingFragment StoreEntitySet="MotivoLicencia">
+                <ScalarProperty Name="IdMotivoLicencia" ColumnName="IdMotivoLicencia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proyecto">
+            <EntityTypeMapping TypeName="DbsrModel.Proyecto">
+              <MappingFragment StoreEntitySet="Proyecto">
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdCuentaFacturacion" ColumnName="IdCuentaFacturacion" />
+                <ScalarProperty Name="FechaInicioEstimada" ColumnName="FechaInicioEstimada" />
+                <ScalarProperty Name="FechaInicioReal" ColumnName="FechaInicioReal" />
+                <ScalarProperty Name="FechaFinEstimada" ColumnName="FechaFinEstimada" />
+                <ScalarProperty Name="FechaFinReal" ColumnName="FechaFinReal" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdModalidadProyecto" ColumnName="IdModalidadProyecto" />
+                <ScalarProperty Name="IdRecursoPL" ColumnName="IdRecursoPL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recurso">
+            <EntityTypeMapping TypeName="DbsrModel.Recurso">
+              <MappingFragment StoreEntitySet="Recurso">
+                <ScalarProperty Name="IdRecurso" ColumnName="IdRecurso" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdTipoRecurso" ColumnName="IdTipoRecurso" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecursoLicencia">
+            <EntityTypeMapping TypeName="DbsrModel.RecursoLicencia">
+              <MappingFragment StoreEntitySet="RecursoLicencia">
+                <ScalarProperty Name="IdRecursoLicencia" ColumnName="IdRecursoLicencia" />
+                <ScalarProperty Name="IdRecurso" ColumnName="IdRecurso" />
+                <ScalarProperty Name="IdMotivoLicencia" ColumnName="IdMotivoLicencia" />
+                <ScalarProperty Name="FechaDesde" ColumnName="FechaDesde" />
+                <ScalarProperty Name="FechaHasta" ColumnName="FechaHasta" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecursoProyecto">
+            <EntityTypeMapping TypeName="DbsrModel.RecursoProyecto">
+              <MappingFragment StoreEntitySet="RecursoProyecto">
+                <ScalarProperty Name="IdRecursoProyecto" ColumnName="IdRecursoProyecto" />
+                <ScalarProperty Name="IdRecurso" ColumnName="IdRecurso" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+                <ScalarProperty Name="FechaDesde" ColumnName="FechaDesde" />
+                <ScalarProperty Name="FechaHasta" ColumnName="FechaHasta" />
+                <ScalarProperty Name="Horas" ColumnName="Horas" />
+                <ScalarProperty Name="HorasFacturacion" ColumnName="HorasFacturacion" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReporteEstado">
+            <EntityTypeMapping TypeName="DbsrModel.ReporteEstado">
+              <MappingFragment StoreEntitySet="ReporteEstado">
+                <ScalarProperty Name="IdReporteEstado" ColumnName="IdReporteEstado" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoRecurso">
+            <EntityTypeMapping TypeName="DbsrModel.TipoRecurso">
+              <MappingFragment StoreEntitySet="TipoRecurso">
+                <ScalarProperty Name="IdTipoRecurso" ColumnName="IdTipoRecurso" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

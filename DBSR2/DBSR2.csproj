@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9132E1C2-D6C0-4EDE-98D2-E57FBF1CECBC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DBSR2</RootNamespace>
+    <AssemblyName>DBSR2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\packages\AjaxControlToolkit.7.1213\lib\40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="AjaxMin">
+      <HintPath>..\packages\AjaxMin.5.11.5295.12309\lib\net40\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\Lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml.Extensions">
+      <HintPath>..\Lib\DocumentFormat.OpenXml.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\Lib\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.2\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Spatial, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClienteForm.aspx" />
+    <Content Include="ClienteList.aspx" />
+    <Content Include="AsignacionRecursosReport.aspx" />
+    <Content Include="UsuarioForm.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="LicenciasReport.aspx" />
+    <Content Include="Images\calendar.gif" />
+    <Content Include="Images\masinfo.gif" />
+    <Content Include="PlanificadorVacacionesForm.aspx" />
+    <Content Include="RecursoLicenciaForm.aspx" />
+    <Content Include="RecursoLicenciaList.aspx" />
+    <Content Include="UsuarioList.aspx" />
+    <Content Include="HorasVendidasReport.aspx" />
+    <Content Include="CuentaFacturacionForm.aspx" />
+    <Content Include="CuentaFacturacionList.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="FeriadoForm.aspx" />
+    <Content Include="FeriadoList.aspx" />
+    <Content Include="Images\cancel.gif" />
+    <Content Include="Images\delete.gif" />
+    <Content Include="Images\edit.gif" />
+    <Content Include="Images\ok.gif" />
+    <Content Include="Images\rel-personas.gif" />
+    <Content Include="Styles\menu.css" />
+    <Content Include="PanelProyectoForm.aspx" />
+    <Content Include="ProyectoForm.aspx" />
+    <Content Include="ProyectoList.aspx" />
+    <Content Include="RecursoForm.aspx" />
+    <Content Include="RecursoList.aspx" />
+    <Content Include="RecursoProyectoForm.aspx" />
+    <Content Include="RecursoProyectoList.aspx" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\styles.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cliente.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClienteForm.aspx.cs">
+      <DependentUpon>ClienteForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClienteForm.aspx.designer.cs">
+      <DependentUpon>ClienteForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClienteList.aspx.cs">
+      <DependentUpon>ClienteList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClienteList.aspx.designer.cs">
+      <DependentUpon>ClienteList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\RequireRolesAttribute.cs" />
+    <Compile Include="Code\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignacionRecursosReport.aspx.cs">
+      <DependentUpon>AsignacionRecursosReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignacionRecursosReport.aspx.designer.cs">
+      <DependentUpon>AsignacionRecursosReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CuentaFacturacion.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbsrModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbsrModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbsrModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbsrModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbsrModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Feriado.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hito.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModalidadProyecto.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MotivoLicencia.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proyecto.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Recurso.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecursoLicencia.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecursoProyecto.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteEstado.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoRecurso.cs">
+      <DependentUpon>DbsrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioForm.aspx.cs">
+      <DependentUpon>UsuarioForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioForm.aspx.designer.cs">
+      <DependentUpon>UsuarioForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LicenciasReport.aspx.cs">
+      <DependentUpon>LicenciasReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LicenciasReport.aspx.designer.cs">
+      <DependentUpon>LicenciasReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlanificadorVacacionesForm.aspx.cs">
+      <DependentUpon>PlanificadorVacacionesForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlanificadorVacacionesForm.aspx.designer.cs">
+      <DependentUpon>PlanificadorVacacionesForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecursoLicenciaForm.aspx.cs">
+      <DependentUpon>RecursoLicenciaForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecursoLicenciaForm.aspx.designer.cs">
+      <DependentUpon>RecursoLicenciaForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecursoLicenciaList.aspx.cs">
+      <DependentUpon>RecursoLicenciaList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecursoLicenciaList.aspx.designer.cs">
+      <DependentUpon>RecursoLicenciaList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioList.aspx.cs">
+      <DependentUpon>UsuarioList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioList.aspx.designer.cs">
+      <DependentUpon>UsuarioList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\ExcelExporter.cs" />
+    <Compile Include="HorasVendidasReport.aspx.cs">
+      <DependentUpon>HorasVendidasReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HorasVendidasReport.aspx.designer.cs">
+      <DependentUpon>HorasVendidasReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CuentaFacturacionForm.aspx.cs">
+      <DependentUpon>CuentaFacturacionForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CuentaFacturacionForm.aspx.designer.cs">
+      <DependentUpon>CuentaFacturacionForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CuentaFacturacionList.aspx.cs">
+      <DependentUpon>CuentaFacturacionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CuentaFacturacionList.aspx.designer.cs">
+      <DependentUpon>CuentaFacturacionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FeriadoForm.aspx.cs">
+      <DependentUpon>FeriadoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FeriadoForm.aspx.designer.cs">
+      <DependentUpon>FeriadoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FeriadoList.aspx.cs">
+      <DependentUpon>FeriadoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FeriadoList.aspx.designer.cs">
+      <DependentUpon>FeriadoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PanelProyectoForm.aspx.cs">
+      <DependentUpon>PanelProyectoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PanelProyectoForm.aspx.designer.cs">
+      <DependentUpon>PanelProyectoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProyectoForm.aspx.cs">
+      <DependentUpon>ProyectoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProyectoForm.aspx.designer.cs">
+      <DependentUpon>ProyectoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProyectoList.aspx.cs">
+      <DependentUpon>ProyectoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProyectoList.aspx.designer.cs">
+      <DependentUpon>ProyectoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecursoForm.aspx.cs">
+      <DependentUpon>RecursoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecursoForm.aspx.designer.cs">
+      <DependentUpon>RecursoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecursoList.aspx.cs">
+      <DependentUpon>RecursoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecursoList.aspx.designer.cs">
+      <DependentUpon>RecursoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecursoProyectoForm.aspx.cs">
+      <DependentUpon>RecursoProyectoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecursoProyectoForm.aspx.designer.cs">
+      <DependentUpon>RecursoProyectoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecursoProyectoList.aspx.cs">
+      <DependentUpon>RecursoProyectoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecursoProyectoList.aspx.designer.cs">
+      <DependentUpon>RecursoProyectoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Files\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DbsrModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbsrModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DbsrModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbsrModel.edmx</DependentUpon>
+      <LastGenOutput>DbsrModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DbsrModel.edmx.diagram">
+      <DependentUpon>DbsrModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DbsrModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbsrModel.edmx</DependentUpon>
+      <LastGenOutput>DbsrModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>51534</DevelopmentServerPort>
+          <DevelopmentServerVPath>/dbsr2</DevelopmentServerVPath>
+          <IISUrl>http://localhost/dbsr2</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

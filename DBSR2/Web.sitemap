@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode title="Home"  description="Home" roles="*">
+		<siteMapNode title="Tablas"  description="Tablas" roles="*">
+			<siteMapNode url="~/ClienteList.aspx" title="Clientes" description="Clientes" />
+			<siteMapNode url="~/CuentaFacturacionList.aspx" title="Cuentas de facturación" description="Cuentas de facturación" />
+			<siteMapNode url="~/ProyectoList.aspx" title="Proyectos" description="Proyectos"  />
+			<siteMapNode url="~/RecursoList.aspx" title="Recursos" description="Recursos"  />
+			<siteMapNode url="~/FeriadoList.aspx" title="Feriados" description="Feriados" />
+			<siteMapNode url="~/UsuarioList.aspx" title="Usuarios"  description="Usuarios" roles="Direccion" />
+		</siteMapNode>
+		<siteMapNode title="Consultas"  description="Consultas" roles="*">
+			<siteMapNode url="~/PlanificadorVacacionesForm.aspx" title="Planificador de vacaciones" description="Planificador de vacaciones" />
+			<siteMapNode url="~/PanelProyectoForm.aspx" title="Panel de proyectos" description="Panel de proeyctos" />
+		</siteMapNode>
+		<siteMapNode title="Reportes"  description="Reportes"  roles="*">
+			<siteMapNode url="~/HorasVendidasReport.aspx" title="Horas vendidas" description="Horas vendidas" />
+			<siteMapNode url="~/AsignacionRecursosReport.aspx" title="Asignación de recursos" description="Asignación de recursos" />
+			<siteMapNode url="~/LicenciasReport.aspx" title="Licencias" description="Licencias" />
+		</siteMapNode>
+    </siteMapNode>
+</siteMap>
